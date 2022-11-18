@@ -3,6 +3,7 @@
 /home/himal/MyCompany/login-spring-mvc/src/main/java/edu/epic/login/config/WebAppConfig.java
 /home/himal/MyCompany/login-spring-mvc/src/main/java/edu/epic/login/service/LoginService.java
 /home/himal/MyCompany/login-spring-mvc/src/main/java/AppInitializer.java
+/home/himal/MyCompany/login-spring-mvc/src/main/java/edu/epic/login/controller/DashboardController.java
 /home/himal/MyCompany/login-spring-mvc/src/main/java/edu/epic/login/config/JpaConfig.java
 /home/himal/MyCompany/login-spring-mvc/src/main/java/edu/epic/login/dto/UserDto.java
 /home/himal/MyCompany/login-spring-mvc/src/main/java/edu/epic/login/util/Response.java
