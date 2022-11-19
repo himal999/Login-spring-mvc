@@ -5,7 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="com.epic.login_system.dto.UserDto"%>
+<%@page import="edu.epic.login.entity.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -91,7 +91,7 @@
                 response.sendRedirect("index.jsp");
             } else {
 
-                UserDto user = (UserDto) session.getAttribute("user");
+                User user = (User) session.getAttribute("user");
 
             }
 
@@ -243,27 +243,54 @@
                 $('#txtUserName').on('change past keyup', function () {
 
 
-                    var data = {username: $('#txtUserName').val(), type: ""};
+                    var data = {username: $('#txtUserName').val()};
                     const regex = /^[A-Z][a-zA-Z]+$/;
-                    checkAvailableUserName(data)
-                    if (regex.test(data.username)) {
-                        $('#usernamecontainer').css('borderColor', 'green');
-                        $('#usernamecontainer').css('box-shadow', '1px 1px 3px green');
-                    } else {
-                        $('#usernamecontainer').css('borderColor', 'red');
-                        $('#usernamecontainer').css('box-shadow', '1px 1px 3px red');
-                    }
+
+                    $.ajax({
+                        type: "get",
+
+                        url: "http://localhost:8080/login-spring-mvc/login?username=" + data.username,
+
+                        success: function (resp) {
+
+                            if (resp.data == true) {
+                                $("#lblusernameerror").show();
+                                if (regex.test(data.username)) {
+                                    $('#usernamecontainer').css('borderColor', 'green');
+                                    $('#usernamecontainer').css('box-shadow', '1px 1px 3px green');
+                                } else {
+                                    $('#usernamecontainer').css('borderColor', 'red');
+                                    $('#usernamecontainer').css('box-shadow', '1px 1px 3px red');
+                                }
+                            } else {
+
+                                $("#lblusernameerror").hide();
+                                if (regex.test(data.username)) {
+                                    $('#usernamecontainer').css('borderColor', 'green');
+                                    $('#usernamecontainer').css('box-shadow', '1px 1px 3px green');
+                                } else {
+                                    $('#usernamecontainer').css('borderColor', 'red');
+                                    $('#usernamecontainer').css('box-shadow', '1px 1px 3px red');
+                                }
+                            }
+                        }
+                    });
+
+
                 });
 
+
                 $('#txtNic').on('change past keyup', function () {
-                    var data = {nic: $('#txtNic').val(), type: "nic"};
+                    var data = {nic: $('#txtNic').val()};
                     $.ajax({
                         type: 'get',
-                        url: 'http://localhost:8080/login/login',
-                        data: data,
-                        success: function (msg) {
+                        url: 'http://localhost:8080/login-spring-mvc/login?nic=' + data.nic,
 
-                            if (msg == 'true') {
+                        success: function (resp) {
+
+
+
+                            if (resp.data == true) {
                                 $('#niccontainer').css('borderColor', 'red');
                                 $('#niccontainer').css('box-shadow', '1px 1px 3px red');
                                 $("#lblNic").show();
@@ -281,14 +308,14 @@
                 });
 
                 $('#txtEmail').on('change past keyup', function () {
-                    var data = {email: $('#txtEmail').val(), type: "email"};
+                    var data = {email: $('#txtEmail').val()};
                     $.ajax({
                         type: 'get',
-                        url: 'http://localhost:8080/login/login',
-                        data: data,
-                        success: function (msg) {
+                        url: 'http://localhost:8080/login-spring-mvc/login?email=' + data.email,
+                        
+                        success: function (resp) {
 
-                            if (msg == 'true') {
+                            if (resp.data == true) {
 
                                 $('#emailcontainer').css('borderColor', 'red');
                                 $('#emailcontainer').css('box-shadow', '1px 1px 3px red');
@@ -364,8 +391,8 @@
 
                 var data = {
                     username: $('#txtUserName').val(),
-                    firstname: $('#txtFirstName').val(),
-                    lastname: $('#txtLastName').val(),
+                    fname: $('#txtFirstName').val(),
+                    lname: $('#txtLastName').val(),
                     nic: $('#txtNic').val(),
                     address: $('#txtAddress').val(),
                     dob: $('#txtDOB').val(),
@@ -375,11 +402,12 @@
 
                 $.ajax({
                     type: "post",
-                    url: "http://localhost:8080/login/dashboard",
-                    data: data,
-                    success: function (msg) {
+                    url: "http://localhost:8080/login-spring-mvc/update",
+                     contentType: "application/json",
+                    data:JSON.stringify(data),
+                    success: function (resp) {
 
-                        if (msg == 'true') {
+                        if (resp.data == true) {
                             $('#errortext').text("USER UPDATE SUCCESS");
 
                             $('#errorsubtext').text('Your are login now dashboard');
@@ -387,7 +415,7 @@
                             $('#errorimg').attr('src', './assets/css/success.png');
                             $('#lblerrormsg').show();
                             setTimeout(setTimerSucces, 2000);
-                        } else if (msg == 'false') {
+                        } else if (resp.data == false) {
                             $('#errortext').text("FAIL TO UPDATE");
                             $('#errorsubtext').text('Please try again');
                             $('#lblerrocontainer').css('border-left', '5px red solid')
@@ -420,11 +448,12 @@
             function checkAvailableUserName(data) {
                 $.ajax({
                     type: "get",
-                    url: "http://localhost:8080/login/login",
-                    data: data,
-                    success: function (msg) {
 
-                        if (msg == "true") {
+                    url: "http://localhost:8080/login-spring-mvc/login?username=" + data,
+
+                    success: function (resp) {
+
+                        if (resp.data == true) {
                             $("#lblusernameerror").hide();
                             return true;
                         } else {

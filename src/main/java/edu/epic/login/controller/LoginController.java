@@ -75,13 +75,15 @@ public class LoginController {
     public Response validLogin(@RequestBody User user, HttpServletRequest req) {
         Optional<User> validUser = loginService.isValidLogin(user);
 
+        
+        
         if (validUser == null) {
             return new Response(200, "ok", false);
         } else {
-
+                
             HttpSession session = req.getSession();
-            session.setAttribute("username", user.getUsername());
-            session.setAttribute("user", validUser);
+            session.putValue("username", user.getUsername());
+            session.putValue("user", new User(validUser.get().getUsername(),validUser.get().getPassword(),validUser.get().getFname(),validUser.get().getLname(),validUser.get().getNic(),validUser.get().getAddress(),validUser.get().getDob(),validUser.get().getEmail()));
             return new Response(200, "ok", true);
 
         }

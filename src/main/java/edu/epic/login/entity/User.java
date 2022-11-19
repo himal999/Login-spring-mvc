@@ -58,6 +58,20 @@ public class User {
         this.accLastLogoutInfo = accLastLogoutInfo;
     }
 
+    public User(String username, String password, String fname, String lname, String nic, String address, LocalDate dob, String email) {
+        this.username = username;
+        this.password = password;
+        this.fname = fname;
+        this.lname = lname;
+        this.nic = nic;
+        this.address = address;
+        this.dob = dob;
+        this.email = email;
+    }
+    
+    
+    
+
     public String getUsername() {
         return username;
     }

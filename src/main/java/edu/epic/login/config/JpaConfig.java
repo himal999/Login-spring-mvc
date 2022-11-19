@@ -26,6 +26,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author himal
  */
 @Configuration
+
 @EnableJpaRepositories(basePackages = "edu.epic.login.repo")
 @EnableTransactionManagement
 @PropertySource("classpath:application.properties")

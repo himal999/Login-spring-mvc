@@ -4,7 +4,6 @@
  */
 package edu.epic.login.service;
 
-
 import edu.epic.login.entity.User;
 import edu.epic.login.repo.LoginRepo;
 import java.text.SimpleDateFormat;
@@ -53,11 +52,14 @@ public class LoginServiceImpl implements LoginService {
     public Optional<User> isValidLogin(User user) {
 
         Optional<User> findUser = loginRepo.findById(user.getUsername());
-       
+
         if (findUser.get().getUsername().equalsIgnoreCase(user.getUsername()) && findUser.get().getPassword().equalsIgnoreCase(user.getPassword())) {
-            
-  
-            return findUser;
+
+            if (loginRepo.logIn(Calendar.getInstance().getTime(), user.getUsername()) > 0) {
+                return findUser;
+
+            }
+
         }
         return null;
     }
@@ -101,9 +103,8 @@ public class LoginServiceImpl implements LoginService {
 
         Date time = Calendar.getInstance().getTime();
 
-      
         User temp = new User(user.getUsername(), user.getPassword(), user.getFname(), user.getLname(), user.getNic(), user.getAddress(), user.getDob(), user.getEmail(), time, time, time, time);
-  
+
         return loginRepo.save(temp);
 
     }

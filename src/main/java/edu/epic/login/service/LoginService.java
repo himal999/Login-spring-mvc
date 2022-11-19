@@ -17,4 +17,5 @@ public interface LoginService {
     boolean isAlredyEmail(String email);
     Optional<User> isValidLogin(User user);
     User isCreateUser(User user);
+    
 }

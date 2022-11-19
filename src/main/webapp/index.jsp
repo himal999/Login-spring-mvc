@@ -483,6 +483,8 @@
                         }
                     })
                 });
+                
+                
                 $('#txtEmail').on('change past keyup', function () {
                     var data = {email: $('#txtEmail').val(), type: "email"};
                     $.ajax({
