@@ -58,7 +58,7 @@
                 align-items: center;
                 align-content: center;
 
-                background: url('./assets/css/login_bg.jpg')no-repeat;
+                background: url('https://wallpaperaccess.com/full/1858126.jpg')no-repeat;
                 background-size: cover;
                 background-position: 100%;
                 opacity: 1
@@ -78,6 +78,7 @@
                 border-radius: 20px;
             }
         </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
 
@@ -113,7 +114,11 @@
 
             <div class="cart">
                 <div style=" padding: 10px;padding-bottom: 20px;padding-top: 20px;display: flex;flex-direction: column;width: 100%;height: 100%;justify-content: center;align-items: center">
-                    <h1 style=" margin-bottom: 20px" >Edit Info</h1>
+                    <div style="display: flex;flex-direction: row;justify-content:start;align-items:start; width: 100%;">
+                        <i class="fa-solid fa-arrow-left" style=" cursor: pointer;font-size: 20px" id="btnBack"></i>
+
+                    </div>
+                    <h1  style=" margin-bottom: 20px">Edit Info</h1>
                     <form style=" display: flex;flex-direction: column; justify-content: left;align-items: center">
 
                         <div style="margin-bottom: 12px;display:flex;flex-direction: column;width: 250px">
@@ -222,8 +227,10 @@
 
 
                         </div>
-                        <div  style="display: flex;flex-direction: column;align-items: center;width: 100%" >
-                            <button id="btnUpdateUser" type="button" style="color: white; width: 90%; position: relative; left: -1px; text-align: center; border: none;outline: none;margin-top: 25px; padding-top: 10px;padding-bottom: 10px;border-radius: 20px;font-size: 17px; background-color: #1e3799" >UPDATE</button>
+                        <div  style="display: flex;flex-direction: row;align-items: center;width: 90%; justify-content: space-between;align-items: center;margin-top: 10px" >
+
+                            <button id="btnClear" type="button" style="color: white;  text-align: center; border: none;outline: none;border-radius: 20px;font-size: 17px; background-color:#4b6584;padding: 10px" >Clear</button>
+                            <button id="btnUpdateUser" type="button" style="color: white;  text-align: center; border: none;outline: none;border-radius: 20px;font-size: 17px; background-color: #1e3799;padding: 10px" >Update</button>
                         </div>
 
                     </form>
@@ -312,7 +319,7 @@
                     $.ajax({
                         type: 'get',
                         url: 'http://localhost:8080/login-spring-mvc/login?email=' + data.email,
-                        
+
                         success: function (resp) {
 
                             if (resp.data == true) {
@@ -403,8 +410,8 @@
                 $.ajax({
                     type: "post",
                     url: "http://localhost:8080/login-spring-mvc/update",
-                     contentType: "application/json",
-                    data:JSON.stringify(data),
+                    contentType: "application/json",
+                    data: JSON.stringify(data),
                     success: function (resp) {
 
                         if (resp.data == true) {
@@ -412,14 +419,15 @@
 
                             $('#errorsubtext').text('Your are login now dashboard');
                             $('#lblerrocontainer').css('border-left', '5px green solid')
-                            $('#errorimg').attr('src', './assets/css/success.png');
+                            $('#errorimg').attr('src', 'https://hrdevelopmentinfo.com/wp-content/uploads/2021/08/correct.png');
                             $('#lblerrormsg').show();
+                            clearField();
                             setTimeout(setTimerSucces, 2000);
                         } else if (resp.data == false) {
-                            $('#errortext').text("FAIL TO UPDATE");
+                            $('#errortext').text("FAILED TO UPDATE");
                             $('#errorsubtext').text('Please try again');
                             $('#lblerrocontainer').css('border-left', '5px red solid')
-                            $('#errorimg').attr('src', './assets/css/faild.png');
+                            $('#errorimg').attr('src', 'https://image.similarpng.com/very-thumbnail/2020/09/Incorrect-sign-icon-on-transparent-background-PNG.png');
                             $('#lblerrormsg').show();
                             setTimeout(setTimerErro, 2000);
                         }
@@ -428,11 +436,23 @@
 
 
                     }, error: function (err) {
-                        console.log(err)
+                        $('#errortext').text("FAILED TO UPDATE");
+                        $('#errorsubtext').text('Please try again');
+                        $('#lblerrocontainer').css('border-left', '5px red solid')
+                        $('#errorimg').attr('src', 'https://image.similarpng.com/very-thumbnail/2020/09/Incorrect-sign-icon-on-transparent-background-PNG.png');
+                        $('#lblerrormsg').show();
+                        setTimeout(setTimerErro, 2000);
                     }
                 })
             }
 
+            $('#btnBack').click(function () {
+                window.location.href = "dashboard.jsp"
+            });
+
+            $('#btnClear').click(function () {
+                clearField();
+            });
             function setTimerErro() {
 
 
@@ -462,6 +482,17 @@
                         }
                     }
                 });
+            }
+
+            function clearField() {
+                $('#txtUserName').val("");
+                $('#txtFirstName').val("");
+                $('#txtLastName').val("");
+                $('#txtNic').val("");
+                $('#txtAddress').val("");
+                $('#txtDOB').val("");
+                $('#txtEmail').val("");
+
             }
         </script>
     </body>

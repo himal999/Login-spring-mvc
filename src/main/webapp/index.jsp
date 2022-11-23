@@ -57,7 +57,7 @@
                 align-items: center;
                 align-content: center;
 
-                background: url('/src/main/webapp/assets/css/login_bg.jpg')no-repeat;
+                background: url('https://wallpaperaccess.com/full/1858126.jpg')no-repeat;
                 background-size: cover;
                 background-position: 100%;
                 opacity: 1
@@ -81,7 +81,7 @@
             .video_container{
                 min-width: 50%;
                 min-height:450px;
-                background: url("../assets/css/night.gif") no-repeat ;
+                background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdYI1Ryed88idPG3wGBXSF6sY5exP7kSFWSw&usqp=CAU');
                 background-size: cover;
                 background-position: 100%;
                 color: white;
@@ -104,7 +104,7 @@
 
             }
             .video_container>p{
-                color:darkgrey;
+                color:black;
                 font-size: 12px;
 
             }
@@ -159,7 +159,7 @@
 
             <div class="cart" id="signincart">
                 <div class="video_container">
-<!--                    <img src="<%=request.getContextPath() + "/assets/css/night.gif"%>" alt="loginImg"  />-->
+                 
                     <h2>Welcome back,</h2>
                     <p>to start you future in today !!!</p>
                     <p>please login and start your work shop &#128512;</p> 
@@ -424,7 +424,7 @@
 
 
                     const regex = /^[A-Z][a-zA-Z]+$/;
-                    
+
 
                     $.ajax({
                         type: "get",
@@ -440,7 +440,7 @@
                                     $('#usernamecontainerSignup').css('borderColor', 'red');
                                     $('#usernamecontainerSignup').css('box-shadow', '1px 1px 3px red');
                                 }
-                                
+
                             } else {
                                 $(".lblusernameerror").show();
                                 if (regex.test($('#txtUserNameSignUp').val())) {
@@ -483,8 +483,8 @@
                         }
                     })
                 });
-                
-                
+
+
                 $('#txtEmail').on('change past keyup', function () {
                     var data = {email: $('#txtEmail').val(), type: "email"};
                     $.ajax({
@@ -663,21 +663,26 @@
                             $('#errortext').text("LOGIN SUCCESS");
                             $('#errorsubtext').text('Your are login now dashboard');
                             $('#lblerrocontainer').css('border-left', '5px green solid')
-                            $('#errorimg').attr('src', './assets/css/success.png');
+                            $('#errorimg').attr('src', 'https://hrdevelopmentinfo.com/wp-content/uploads/2021/08/correct.png');
                             $('#lblerrormsg').show();
                             setTimeout(setTimerSucces, 2000);
                         } else if (msg.data === false) {
                             $('#errortext').text("LOGIN FAILD");
                             $('#errorsubtext').text('Invalid User Name or Password');
                             $('#lblerrocontainer').css('border-left', '5px red solid')
-                            $('#errorimg').attr('src', './assets/css/faild.png');
+                            $('#errorimg').attr('src', 'https://image.similarpng.com/very-thumbnail/2020/09/Incorrect-sign-icon-on-transparent-background-PNG.png');
                             $('#lblerrormsg').show();
                             setTimeout(setTimerErro, 2000);
                         }
 
                     },
                     error: function (err) {
-                        console.log(err)
+                        $('#errortext').text("LOGIN FAILD");
+                        $('#errorsubtext').text('Invalid User Name or Password');
+                        $('#lblerrocontainer').css('border-left', '5px red solid')
+                        $('#errorimg').attr('src', 'https://image.similarpng.com/very-thumbnail/2020/09/Incorrect-sign-icon-on-transparent-background-PNG.png');
+                        $('#lblerrormsg').show();
+                        setTimeout(setTimerErro, 2000);
                     }
 
 
@@ -716,14 +721,14 @@
 
                             $('#errorsubtext').text('Your are login now dashboard');
                             $('#lblerrocontainer').css('border-left', '5px green solid')
-                            $('#errorimg').attr('src', './assets/css/success.png');
+                            $('#errorimg').attr('src', 'https://hrdevelopmentinfo.com/wp-content/uploads/2021/08/correct.png');
                             $('#lblerrormsg').show();
                             setTimeout(setTimerSucces, 2000);
                         } else if (msg.data == false) {
                             $('#errortext').text("FAIL TO CREATE");
                             $('#errorsubtext').text('Please try again');
                             $('#lblerrocontainer').css('border-left', '5px red solid')
-                            $('#errorimg').attr('src', './assets/css/faild.png');
+                            $('#errorimg').attr('src', 'https://image.similarpng.com/very-thumbnail/2020/09/Incorrect-sign-icon-on-transparent-background-PNG.png');
                             $('#lblerrormsg').show();
                             setTimeout(setTimerErro, 2000);
                         }
@@ -732,7 +737,12 @@
 
 
                     }, error: function (err) {
-                        console.log(err)
+                        $('#errortext').text("FAIL TO CREATE");
+                        $('#errorsubtext').text('Please try again');
+                        $('#lblerrocontainer').css('border-left', '5px red solid')
+                        $('#errorimg').attr('src', 'https://image.similarpng.com/very-thumbnail/2020/09/Incorrect-sign-icon-on-transparent-background-PNG.png');
+                        $('#lblerrormsg').show();
+                        setTimeout(setTimerErro, 2000);
                     }
                 })
             }

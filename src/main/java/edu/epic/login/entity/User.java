@@ -1,7 +1,7 @@
 
 package edu.epic.login.entity;
 
-import java.sql.Blob;
+
 import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Column;

@@ -37,6 +37,16 @@
 
 
         %>
+        <div id="lblerrormsg" style=" z-index: 20; width:100%;height: auto;position: absolute;display: flex;flex-direction: column;justify-content: right;align-items:end">
+            <div id="lblerrocontainer" style=" background-color: white; border-left: 5px red solid; padding: 10px; display: flex;flex-direction: row;justify-content: center;align-items: center">
+                <img id="errorimg" src="./assets/css/faild.png" alt="alt" width="55px" height="40px"/>
+                <div style=" margin-left: 5px">
+                    <h5 id="errortext">LOGIN FAILD</h5>
+                    <p id='errorsubtext' style=" font-size: 14px">Invalid User Name or Password</p>
+                </div>
+
+            </div>
+        </div>
         <div  class="col-6 vw-100  position-relative d-flex justify-content-between align-items-center ms-auto bg-primary">
             <h1 class="text-start text-light row m-2">Hello  ${username} !</h1>
             <div class="d-flex flex-row ">
@@ -96,6 +106,9 @@
         <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
         <script type="text/javascript">
 
+            $(document).ready(function () {
+                $('#lblerrormsg').hide();
+            });
 
             $('#btnDelete').click(function () {
 
@@ -107,13 +120,33 @@
                         success: function (msg) {
 
                             if (msg.data == true) {
-                                window.location.href = "index.jsp"
+
+                                $('#errortext').text("USER DELETE SUCCESS");
+
+                                $('#errorsubtext').text('Your are login out now ');
+                                $('#lblerrocontainer').css('border-left', '5px green solid')
+                                $('#errorimg').attr('src', 'https://hrdevelopmentinfo.com/wp-content/uploads/2021/08/correct.png');
+                                $('#lblerrormsg').show();
+                                setTimeout(setTimerSucces, 2000);
+
+                            } else {
+                                $('#errortext').text("FAILED TO DELETE");
+                                $('#errorsubtext').text('Please try again');
+                                $('#lblerrocontainer').css('border-left', '5px red solid')
+                                $('#errorimg').attr('src', 'https://image.similarpng.com/very-thumbnail/2020/09/Incorrect-sign-icon-on-transparent-background-PNG.png');
+                                $('#lblerrormsg').show();
+                                setTimeout(setTimerErro, 2000);
                             }
 
 
                         },
                         error: function (err) {
-                            console.log(err);
+                            $('#errortext').text("FAILED TO DELETE");
+                            $('#errorsubtext').text('Please try again');
+                            $('#lblerrocontainer').css('border-left', '5px red solid')
+                            $('#errorimg').attr('src', 'https://image.similarpng.com/very-thumbnail/2020/09/Incorrect-sign-icon-on-transparent-background-PNG.png');
+                            $('#lblerrormsg').show();
+                            setTimeout(setTimerErro, 2000);
                         },
                     });
                 }
@@ -128,16 +161,46 @@
                         success: function (msg) {
 
                             if (msg.data == true) {
-                                window.location.href = "index.jsp";
+                                $('#errortext').text("LOGOUT SUCCESS");
+
+                                $('#errorsubtext').text('Your are logout now ');
+                                $('#lblerrocontainer').css('border-left', '5px green solid')
+                                $('#errorimg').attr('src', 'https://hrdevelopmentinfo.com/wp-content/uploads/2021/08/correct.png');
+                                $('#lblerrormsg').show();
+                                setTimeout(setTimerSucces, 2000);
+                            } else {
+                                $('#errortext').text("FAILED TO LOGOUT");
+                                $('#errorsubtext').text('Please try again');
+                                $('#lblerrocontainer').css('border-left', '5px red solid')
+                                $('#errorimg').attr('src', 'https://image.similarpng.com/very-thumbnail/2020/09/Incorrect-sign-icon-on-transparent-background-PNG.png');
+                                $('#lblerrormsg').show();
+                                setTimeout(setTimerErro, 2000);
                             }
                         },
                         error: function (err) {
-                            console.log(err)
+                            $('#errortext').text("FAILED TO LOGOUT");
+                            $('#errorsubtext').text('Please try again');
+                            $('#lblerrocontainer').css('border-left', '5px red solid')
+                            $('#errorimg').attr('src', 'https://image.similarpng.com/very-thumbnail/2020/09/Incorrect-sign-icon-on-transparent-background-PNG.png');
+                            $('#lblerrormsg').show();
+                            setTimeout(setTimerErro, 2000);
                         }
 
                     })
                 }
             })
+            function setTimerErro() {
+
+
+                $("#lblerrormsg").hide();
+            }
+            function setTimerSucces() {
+
+
+                $("#lblerrormsg").hide();
+                window.location.href = "index.jsp";
+            }
+
         </script>
     </body>
 </html>
