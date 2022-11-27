@@ -126,7 +126,7 @@
                                 <div id="usernamecontainer" style=" box-shadow: 0px 0px 0px 0px rgba(0,0,0,0); display: flex;flex-direction: row; border: 1px black solid;border-radius: 20px;  padding-left: 10px;
                                      padding-right: 10px; margin-bottom: 5px;width: 100%;height: 40px;align-items: center">
                                     <i class="fa-solid fa-user" style=" margin-right: 5px"></i>
-                                    <input type="text" placeholder="Enter User Name" id="txtUserName"style="width: 90%; background: transparent  "   name="username"  required="true"/>
+                                    <input type="text" value ="${user.getUsername()}"  placeholder="Enter User Name" id="txtUserName"style="width: 90%; background: transparent  "   name="username"  required="true"/>
 
                                 </div>
                                 <label id="lblusernameerror" style="color: red; font-size: 13px;position: absolute;right: -180px;top: 10px">user name alredy exists</label>
@@ -147,14 +147,14 @@
                                   padding-right: 10px; margin-bottom: 5px;width:250px;height: 40px;align-items: center">
                                 <i class="fa-regular fa-face-smile"style=" margin-right: 5px"></i>
 
-                                <input type="text" placeholder="Enter First Name" id="txtFirstName"style="width: 90%; background: transparent "  class="row form-control m-2" name="firstname"  required="true"/>
+                                <input type="text" value ="${user.getFname()}" placeholder="Enter First Name" id="txtFirstName"style="width: 90%; background: transparent "  class="row form-control m-2" name="firstname"  required="true"/>
 
                             </div>
                             <div id="lastnamecontainer" style="position: relative;left: 10px;  display: flex;flex-direction: row; border: 1px black solid;border-radius: 20px;  padding-left: 10px;
                                  padding-right: 10px; margin-bottom: 5px;width: 250px;height: 40px;align-items: center">
                                 <i class="fa-regular fa-face-smile"style=" margin-right: 5px"></i>
 
-                                <input type="text" placeholder="Enter Last Name"id="txtLastName" name="lastname"required="true" style="background: transparent"/>
+                                <input type="text"value ="${user.getLname()}" placeholder="Enter Last Name"id="txtLastName" name="lastname"required="true" style="background: transparent"/>
                             </div>
                             <ul style=" font-size: 13px; position: relative;left: 30px;color:#57606f ">
                                 <li>Must be First Charactor Capital</li>
@@ -168,7 +168,7 @@
                                      padding-right: 10px; margin-bottom: 5px;width: 100%;height: 40px;align-items: center">
                                     <i class="fa-solid fa-file"style=" margin-right: 5px"></i>
 
-                                    <input type="text" placeholder="Enter NIC" id="txtNic"required="true" name="nic" style="width: 90%; background: transparent "/>
+                                    <input type="text" value ="${user.getNic()}" placeholder="Enter NIC" id="txtNic"required="true" name="nic" style="width: 90%; background: transparent "/>
 
                                 </div>
                                 <label id="lblNic" style="color: red; font-size: 13px;position: absolute;right: -150px;top: 10px">NIC alredy exists</label>
@@ -185,7 +185,7 @@
                                  padding-right: 10px; margin-bottom: 5px;width: 250px;height: 40px;align-items: center">
                                 <i class="fa-solid fa-house-chimney"style=" margin-right: 2px"></i>
 
-                                <input type="text"  placeholder="Enter City" id="txtAddress" name="address" style="width: 90%;background: transparent  "   name="address"  required="true"/>
+                                <input type="text"  placeholder="Enter City" id="txtAddress" value ="${user.getAddress()}" name="address" style="width: 90%;background: transparent  "   name="address"  required="true"/>
 
                             </div>
                             <ul style=" font-size: 13px; position: relative;left: 30px;color:#57606f ">
@@ -200,7 +200,7 @@
                                  padding-right: 10px; margin-bottom: 5px;width:250px;height: 40px;align-items: center">
                                 <i class="fa-solid fa-baby" style="margin-right: 5px"></i>
 
-                                <input type="date" placeholder="Enter DOB" id="txtDOB" name="dob" style="width: 90%; background: transparent "   name="address"  required="true"/>
+                                <input type="date" placeholder="Enter DOB" id="txtDOB"  value ="${user.getDob()}" name="dob" style="width: 90%; background: transparent "   name="address"  required="true"/>
 
                             </div>
                             <ul style=" font-size: 13px; position: relative;left: 30px;color:#57606f ">
@@ -219,7 +219,7 @@
                                      padding-right: 10px; margin-bottom: 5px;width: 250px;height: 40px;align-items: center">
                                     <i class="fa-solid fa-envelope" style=" margin-right: 5px"></i>
 
-                                    <input type="email" placeholder="Enter email" id="txtEmail" style="width: 90%;background: transparent  "   name="email"  required="true"/>
+                                    <input type="email" placeholder="Enter email" id="txtEmail" value ="${user.getEmail()}" style="width: 90%;background: transparent  "   name="email"  required="true"/>
 
                                 </div>
                                 <label id="lblemail" style="color: red; font-size: 13px;position: absolute;right: -160px;top: 10px">email alredy exists</label>

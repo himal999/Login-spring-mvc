@@ -2,9 +2,7 @@ edu/epic/login/config/JpaConfig.class
 edu/epic/login/util/Response.class
 edu/epic/login/repo/LoginRepo.class
 edu/epic/login/config/WebRootConfig.class
-edu/epic/login/service/DashboardServiceImpl.class
 edu/epic/login/service/LoginService.class
-edu/epic/login/service/LoginServiceImpl.class
 edu/epic/login/controller/LoginController.class
 edu/epic/login/service/DashboardService.class
 edu/epic/login/dto/UserDto.class

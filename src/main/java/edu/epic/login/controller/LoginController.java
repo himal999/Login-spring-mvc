@@ -1,6 +1,5 @@
 package edu.epic.login.controller;
 
-
 import edu.epic.login.entity.User;
 import edu.epic.login.service.LoginService;
 import edu.epic.login.util.Response;
@@ -12,7 +11,7 @@ import org.springframework.http.MediaType;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +29,8 @@ public class LoginController {
 
     @Autowired
     LoginService loginService;
+
+    private HttpSession session;
 
     //checking user name
     @GetMapping(params = {"username"}, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -60,7 +61,7 @@ public class LoginController {
     //checking alredy email address
     @GetMapping(params = {"email"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public Response checkAlreayExistsEmail(@RequestParam("email") String email) {
-        System.out.println("emial");
+
         if (loginService.isAlredyEmail(email)) {
             return new Response(200, "ok", true);
         } else {
@@ -75,15 +76,13 @@ public class LoginController {
     public Response validLogin(@RequestBody User user, HttpServletRequest req) {
         Optional<User> validUser = loginService.isValidLogin(user);
 
-        
-        
         if (validUser == null) {
             return new Response(200, "ok", false);
         } else {
-                
-            HttpSession session = req.getSession();
+
+            session = req.getSession();
             session.putValue("username", user.getUsername());
-            session.putValue("user", new User(validUser.get().getUsername(),validUser.get().getPassword(),validUser.get().getFname(),validUser.get().getLname(),validUser.get().getNic(),validUser.get().getAddress(),validUser.get().getDob(),validUser.get().getEmail()));
+            session.putValue("user", new User(validUser.get().getUsername(), validUser.get().getPassword(), validUser.get().getFname(), validUser.get().getLname(), validUser.get().getNic(), validUser.get().getAddress(), validUser.get().getDob(), validUser.get().getEmail()));
             return new Response(200, "ok", true);
 
         }
@@ -93,11 +92,9 @@ public class LoginController {
     @PostMapping(path = "/new", produces = MediaType.APPLICATION_JSON_VALUE)
     public Response createUser(@RequestBody User user, HttpServletRequest req) {
 
-        
-        
         User newUser = loginService.isCreateUser(user);
 
-        HttpSession session = req.getSession();
+        session = req.getSession();
         session.setAttribute("username", newUser.getUsername());
         session.setAttribute("user", newUser);
         return new Response(200, "ok", true);

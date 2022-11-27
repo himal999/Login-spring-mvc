@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>edu.epic</groupId>
-    <artifactId>login-spring-mvc</artifactId>
+    <artifactId>spingMVC</artifactId>
     <version>1.0.0</version>
     <packaging>war</packaging>
 
-    <name>login-spring-mvc</name>
+    <name>spingMVC</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
