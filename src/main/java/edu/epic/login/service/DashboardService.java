@@ -5,13 +5,19 @@
 package edu.epic.login.service;
 
 import edu.epic.login.entity.User;
+import java.util.Optional;
 
 /**
  *
  * @author himal
  */
 public interface DashboardService {
+
     boolean logOut(String userName);
+
     boolean dropUser(String userName);
-    boolean editUser(User user,String userName);
+
+    boolean editUser(User user, String userName);
+
+    byte[] getUserReport(String userName);
 }

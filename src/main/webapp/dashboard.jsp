@@ -56,7 +56,10 @@
             </div>
         </div>
         <div class="col d-flex position-relative flex-column justify-content-center align-items-center">
-
+            <div style="width: 100%; display: flex;flex-direction: row; justify-content: flex-end;align-items: flex-end">
+                <a href="http://localhost:8080/login-spring-mvc/report" target="_blank" style=" cursor: pointer" > Download Account Summary</a>
+                
+            </div>
             <table class="table">
                 <thead>
                     <tr >
@@ -109,6 +112,16 @@
             $(document).ready(function () {
                 $('#lblerrormsg').hide();
             });
+
+//            $('#lblReport').click(function(){
+//               $.ajax({
+//                        type: "GET",
+//                        url: "http://localhost:8080/login-spring-mvc/report",
+//                      
+//                    });
+//                
+//            });
+
 
             $('#btnDelete').click(function () {
 

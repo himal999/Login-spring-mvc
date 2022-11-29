@@ -4,10 +4,18 @@ import edu.epic.login.entity.User;
 import edu.epic.login.service.DashboardService;
 import edu.epic.login.util.Response;
 
+import java.io.FileNotFoundException;
+import java.time.LocalDate;
+
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import net.sf.jasperreports.engine.JRException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -67,6 +75,20 @@ public class DashboardController {
         } else {
             return new Response(200, "ok", false);
         }
+
+    }
+
+    @GetMapping(path = "/report")
+    public ResponseEntity<byte[]> reportGenarator(HttpServletRequest req) throws FileNotFoundException, JRException {
+
+        byte[] userReport = dashboardService.getUserReport(req.getSession().getAttribute("username").toString());
+    
+
+        HttpHeaders header = new HttpHeaders();
+
+        header.set(HttpHeaders.CONTENT_DISPOSITION, "inline;filename=" +req.getSession().getAttribute("username").toString()+" "+LocalDate.now() + ".pdf");
+
+        return ResponseEntity.ok().headers(header).contentType(MediaType.APPLICATION_PDF).body(userReport);
 
     }
 

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="user" pageWidth="842" pageHeight="1191" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d1f54f20-d6c2-4f19-ab42-a308debc1014">
+    <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+    <property name="com.jaspersoft.studio.unit." value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+    <property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+    <queryString language="SQL">
+		<![CDATA[]]>
+    </queryString>
+    <field name="username" class="java.lang.String"/>
+    <field name="email" class="java.lang.String"/>
+    <field name="fname" class="java.lang.String"/>
+    <field name="lname" class="java.lang.String"/>
+    <field name="nic" class="java.lang.String"/>
+    <field name="address" class="java.lang.String"/>
+    <field name="dob" class="java.time.LocalDate"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="104" splitType="Stretch">
+            <rectangle>
+                <reportElement x="-20" y="1" width="842" height="80" backcolor="#4D4B4B" uuid="a3e58c3d-0a05-43ad-9948-569539e85e0a"/>
+                <graphicElement>
+                    <pen lineWidth="0.0"/>
+                </graphicElement>
+            </rectangle>
+            <staticText>
+                <reportElement x="120" y="21" width="555" height="40" forecolor="#FFFCFC" backcolor="#120C0C" uuid="95197e23-2a9f-483d-a391-5fd3e6139dcd"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="24"/>
+                </textElement>
+                <text><![CDATA[Account Summary]]></text>
+            </staticText>
+        </band>
+    </title>
+    <detail>
+        <band height="71" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="0" width="100" height="20" uuid="0f4134bc-5b4d-400b-838f-077124fe6f03"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[User Name]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="110" y="0" width="100" height="20" uuid="0d35636b-586d-48ce-9d99-30044f1251fb"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[First Name]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="220" y="0" width="100" height="20" uuid="67919656-d52b-4c20-9852-f44d7d51eb15"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Last Name]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="330" y="0" width="100" height="20" uuid="b0b27780-c29e-40c4-b501-d630200afad5"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[NIC]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="440" y="0" width="100" height="20" uuid="1bedb773-05e8-4510-9565-c263c46b598d"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[City]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="560" y="0" width="100" height="20" uuid="7462fd37-0a4a-46bf-8c32-1c42db33c387"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[DOB]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="660" y="0" width="170" height="20" uuid="840eb375-05f4-4fd6-8187-d2cc32bfe619"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Email]]></text>
+            </staticText>
+            <textField textAdjust="ScaleFont">
+                <reportElement x="0" y="30" width="100" height="30" uuid="7993c21e-2104-485a-980c-839fbedc4dfc"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="11"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="ScaleFont">
+                <reportElement x="110" y="30" width="100" height="30" uuid="8dccd859-cb21-4ce8-85e7-f5aa843cb59a"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="11"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{fname}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="ScaleFont">
+                <reportElement x="220" y="30" width="100" height="30" uuid="4c66ec45-5969-4a9a-9cd2-cacc01cfc47a"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="11"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lname}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="ScaleFont">
+                <reportElement x="330" y="30" width="100" height="30" uuid="a6f3598b-3db6-4651-b843-7826f4401a8e"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="11"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{nic}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="ScaleFont">
+                <reportElement x="450" y="30" width="100" height="30" uuid="797fa418-3e03-4feb-b0e2-e7bde343f590"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="11"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="ScaleFont">
+                <reportElement x="560" y="30" width="100" height="30" uuid="e56e9ca8-9170-4ed5-a512-106d14a94b95"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="11"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{dob}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="ScaleFont">
+                <reportElement x="700" y="30" width="100" height="30" uuid="041dd254-50e9-4af7-b094-1a95a8ad871c"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="11"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <summary>
+        <band height="42" splitType="Stretch"/>
+    </summary>
+</jasperReport>

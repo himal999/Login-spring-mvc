@@ -1,14 +1,10 @@
-
 package edu.epic.login.entity;
-
 
 import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
-
 
 /**
  *
@@ -38,8 +34,6 @@ public class User {
     @Column(name = "acc_last_logout", nullable = false)
     private Date accLastLogoutInfo;
 
-   
-
     public User() {
     }
 
@@ -68,9 +62,16 @@ public class User {
         this.dob = dob;
         this.email = email;
     }
-    
-    
-    
+
+    public User(String username, String fname, String lname, String nic, String address, LocalDate dob, String email) {
+        this.username = username;
+        this.fname = fname;
+        this.lname = lname;
+        this.nic = nic;
+        this.address = address;
+        this.dob = dob;
+        this.email = email;
+    }
 
     public String getUsername() {
         return username;
@@ -172,9 +173,5 @@ public class User {
     public String toString() {
         return "User{" + "username=" + username + ", password=" + password + ", fname=" + fname + ", lname=" + lname + ", nic=" + nic + ", address=" + address + ", dob=" + dob + ", email=" + email + ", accCreateInfo=" + accCreateInfo + ", accUpdateInfo=" + accUpdateInfo + ", accLastLoginInfo=" + accLastLoginInfo + ", accLastLogoutInfo=" + accLastLogoutInfo + '}';
     }
-
-  
-
-  
 
 }

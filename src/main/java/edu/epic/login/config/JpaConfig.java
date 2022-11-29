@@ -4,6 +4,7 @@
  */
 package edu.epic.login.config;
 
+import javax.naming.NamingException;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jndi.JndiTemplate;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -45,15 +47,15 @@ public class JpaConfig {
     }
 
     @Bean
-    public DataSource dataSource() {
+    public DataSource dataSource() throws NamingException {
 
-        BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setUsername(env.getRequiredProperty("app.db.userName"));
-        basicDataSource.setPassword(env.getRequiredProperty("app.db.password"));
-        basicDataSource.setUrl(env.getRequiredProperty("app.db.url"));
-        basicDataSource.setDriverClassName(env.getRequiredProperty("app.db.driverClass"));
-
-        return basicDataSource;
+//        BasicDataSource basicDataSource = new BasicDataSource();
+//        basicDataSource.setUsername(env.getRequiredProperty("app.db.userName"));
+//        basicDataSource.setPassword(env.getRequiredProperty("app.db.password"));
+//        basicDataSource.setUrl(env.getRequiredProperty("app.db.url"));
+//        basicDataSource.setDriverClassName(env.getRequiredProperty("app.db.driverClass"));
+          return (DataSource) new JndiTemplate().lookup(env.getProperty("jdbc.url"));
+//        return basicDataSource;
 
     }
 
